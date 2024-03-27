@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Menu</h1>
+<!-- Begin column -->
+<div class="column">
+   <!-- Loop through menu items -->
+   {% for item in menu|dictsort:"name" %}
+   <p>
+      <!-- Link for each menu item -->
+      <a href="{% url 'menu_item' pk=item.pk %}">
+         <!-- Name of the item -->
+         {{ item.name }}
+      </a>
+      <!-- Price of the item -->
+      <span class="menu-price">
+         ${{ item.price }}.00
+      </span>
+   </p>
+   <!-- End of loop -->
+   {% endfor %}
+</div>
+<!-- End column -->
+{% endblock %}
